@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>To-Do List</title>
+      <style>
+     body{
+      background-image: url('pic.png');
+      
+     }
+     h1{
+      text-align: center;
+      margin-top: 70px;
+      font-size: 55px;
+     }
+     .today{
+      width:100px;
+      padding-top: 8px;
+      padding-bottom: 5px;
+      padding-left: 6px;
+      padding-right: 3px;
+      margin-left: 20px;
+      font-size: 14px;
+     }
+
+     
+     .affir{
+      text-align: center;
+      font-size: 23px;
+      cursor: pointer;
+     }
+     .affirmation{
+      padding-left: 2px;
+      padding-bottom: 30px;
+      padding-right: 230px;
+       margin-left: 420px;
+      cursor: pointer;
+     }
+     .inp{
+
+      margin-left: 20px;
+      margin-top: 60px;
+      padding-left: 20px;
+      padding-right: 50px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      cursor: pointer;
+      
+     }
+     .add{
+      padding-bottom: 10px;
+      padding-top: 7px;
+      padding-left: 10px;
+      padding-right: 10px;
+      background-color: white;
+      font-size: 20px;
+      border-width:1px ;
+      border-radius: 3px;
+      cursor: pointer;
+      color: rgb(147, 209, 248);
+      
+     }
+     .task{
+      cursor: pointer;
+      margin-left:20px ;
+      margin-right: 100px;
+     }
+     .tasks{
+       display: flex;
+        gap: 12px;
+        font-size: 24px;
+
+     }
+     .b{
+     
+      background-color: white;
+      border-width: 1px;
+     }
+      </style>
+        
+    </head>
+
+    <body>
+         <h1>📃 My To-Do List</h1>
+        <input type="date" class="today">
+        <div >
+            <p class="affir">🦢Today's Affirmation🦢</p>
+            <input type="text" class="affirmation">
+
+        </div>
+
+         <input type="text" class="inp" placeholder="Enter the task" >
+         <button class="add" onclick="
+         add();
+         
+         ">+</button>
+
+         <div class="task"></div>
+
+
+         <script>
+
+         
+        document.querySelector('.today').valueAsDate = new Date();
+
+
+           
+          let todo=[];
+          run();
+          
+
+        function run()
+        {
+          let samHtml='';
+          for(let i=0;i<todo.length;i++){
+              const todoObject=todo[i];
+                const name=todoObject.name;
+
+                const html=`
+                
+                <p class="tasks" >
+                  <input type=checkbox "
+                  >${name}<button class="b" onclick=" 
+                   todo.splice(${i},1); run();
+                  ">🗑</button>
+                
+                </p>
+                
+                `
+        samHtml+=html;
+
+    }
+document.querySelector('.task').innerHTML=samHtml;
+      }
+          
+         function add(){
+
+          const userInput=document.querySelector('.inp');
+           
+          let name=userInput.value;
+         
+            
+          todo.push({name:name});
+          userInput.value='';
+        
+    
+         run();
+
+         const addButton = document.querySelector('.add');
+
+         }
+        
+         </script>
+    </body>
+</html>
